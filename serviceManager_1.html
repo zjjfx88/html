@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+<!--
+	作者：zjj7842806@163.com
+	时间：2017-02-28
+	描述：后天管理页面，主要实现的是基础的页面布局，左侧的菜单栏保持不变，右侧的内容栏可以做到超长后出现
+	滚动条
+	主要用到的css技术有：
+	1.对页面所有元素做样式的处理，使用body{}   line:22
+	2.去除元素到其他元素之间的间隙，使用margin：0，border为元素边的样式，padding为元素内部的元素距离自己的边框   line:24
+	3.css样式的封装，如.left和.right,封装好之后再元素中直接使用    line:27,30
+	4.两个div，一个向左float，一个向右float，按照2：8比例设置宽度，当浏览器被缩小，两个div都会缩小，可以使用min-width设置最小宽度  line:43,57
+	5.两个div，左侧菜单，右侧内容，当内容超出浏览器高度，向下滚动过程中，左侧会消失，可以使用position进行定位  line:47,58
+	6.如果想左面菜单固定，右面超长时，自动出现滚动条，可以使用overflow:auto  line:65
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title></title>
+		<style>
+			/* 对整个页面的所有元素进行设置*/
+			body{
+				/* 元素所占空间边缘到相邻元素得举例 */
+				margin: 0;
+			}
+			/* .left和.right是公共的css样式，创建后，在元素中可以直接使用,如<div class="menu left"></div>当中的left */
+			.left{
+				float: left;
+			}
+			.right{
+				float: right;
+			}
+			.pg-header{
+				/* 头部样式：高度，背景颜色，字体颜色*/
+				height: 48px;
+				background-color: #2459a2;
+				color: white;
+			}
+			/* 一下两个样式，是内容div当中两个小div的大小比例，但是如果浏览器页面不断缩小，会造成两个子元素不断变小，所以增加最小宽度 * */
+			.pg-content .menu{
+				/*width: 20%;
+				background-color: red;
+				min-width: 200px;
+				 左侧菜单栏的高度
+				height: 600px;*/
+				/* 相对于浏览器窗口的绝对定位，使用fix*/
+				position: fixed;
+				top: 48px;
+				left: 0;
+				bottom: 0;
+				width: 200px;
+				background-color: #dddddd;
+			}
+			.pg-content .content{
+				/*width: 80%;
+				background-color: greenyellow;
+				min-width: 800px;*/
+				position: fixed;
+				top: 48px;
+				right: 0;
+				bottom: 0;
+				left: 200px;
+				background-color: #FFFFFF;
+				/* 自动出现滚动条 */
+				overflow: auto;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="pg-header"></div>
+		<div class="pg-content">
+			<!--
+            	作者：zjj7842806@163.com
+            	时间：2017-02-28
+            	描述：后天管理得内容页面，左侧是菜单栏，右侧是展示栏
+            		  可以使用一个大的div，里面再套两个小div
+            -->
+            <div class="menu left">a</div>
+            <div class="content right">
+            	<p>abcd</p><p>abcd</p><p>abcd</p>
+            	<p>abcd</p><p>abcd</p><p>abcd</p>
+            	<p>abcd</p><p>abcd</p><p>abcd</p>
+            	<p>abcd</p><p>abcd</p><p>abcd</p>
+            	<p>abcd</p><p>abcd</p><p>abcd</p>
+            	<p>abcd</p><p>abcd</p><p>abcd</p>
+            	<p>abcd</p><p>abcd</p><p>abcd</p>
+            	<p>abcd</p><p>abcd</p><p>abcd</p>
+            	<p>abcd</p><p>abcd</p><p>abcd</p>
+            	<p>abcd</p><p>abcd</p><p>abcd</p>
+            	<p>abcd</p><p>abcd</p><p>abcd</p>
+            </div>
+		</div>
+		<div class="pg-footer"></div>
+	</body>
+</html>
