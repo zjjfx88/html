@@ -10,8 +10,10 @@
 	2.去除元素到其他元素之间的间隙，使用margin：0，border为元素边的样式，padding为元素内部的元素距离自己的边框   line:24
 	3.css样式的封装，如.left和.right,封装好之后再元素中直接使用    line:27,30
 	4.两个div，一个向左float，一个向右float，按照2：8比例设置宽度，当浏览器被缩小，两个div都会缩小，可以使用min-width设置最小宽度  line:43,57
-	5.两个div，左侧菜单，右侧内容，当内容超出浏览器高度，向下滚动过程中，左侧会消失，可以使用position进行定位  line:47,58
-	6.如果想左面菜单固定，右面超长时，自动出现滚动条，可以使用overflow:auto  line:65
+	5.两个div，左侧菜单，右侧内容，当内容超出浏览器高度，向下滚动过程中，左侧会消失，可以使用position进行定位  line:43,51
+	6.如果想左面菜单固定，右面超长时，自动出现滚动条，可以使用overflow:auto  line:60
+	7.当右侧内容div因为浏览器缩小和而宽度小鱼980像素时，自动出现左右的滚动条，则使用min-width即可  line：57
+	8.返回页面顶部的制作方式：position: fixed  line：76
 -->
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
 	<head>
@@ -38,13 +40,7 @@
 			}
 			/* 一下两个样式，是内容div当中两个小div的大小比例，但是如果浏览器页面不断缩小，会造成两个子元素不断变小，所以增加最小宽度 * */
 			.pg-content .menu{
-				/*width: 20%;
-				background-color: red;
-				min-width: 200px;
-				 左侧菜单栏的高度
-				height: 600px;*/
-				/* 相对于浏览器窗口的绝对定位，使用fix*/
-				position: fixed;
+				position: absolute;
 				top: 48px;
 				left: 0;
 				bottom: 0;
@@ -52,16 +48,15 @@
 				background-color: #dddddd;
 			}
 			.pg-content .content{
-				/*width: 80%;
-				background-color: greenyellow;
-				min-width: 800px;*/
-				position: fixed;
+				position: absolute;
 				top: 48px;
-				right: 0;
-				bottom: 0;
 				left: 200px;
-				background-color: #FFFFFF;
-				/* 自动出现滚动条 */
+				bottom: 0;
+				right: 0px;
+				/* 当右侧内容div因为浏览器缩小和而宽度小鱼980像素时，自动出现左右的滚动条 */
+				min-width: 980px;
+				/* 左侧菜单栏，使用absolute是绝对定位，后面不会在动，而右侧内容，使用overflow：auto，不动的前提下
+				 自动生成滚动条 */
 				overflow: auto;
 			}
 		</style>
@@ -77,17 +72,23 @@
             -->
             <div class="menu left">a</div>
             <div class="content right">
-            	<p>abcd</p><p>abcd</p><p>abcd</p>
-            	<p>abcd</p><p>abcd</p><p>abcd</p>
-            	<p>abcd</p><p>abcd</p><p>abcd</p>
-            	<p>abcd</p><p>abcd</p><p>abcd</p>
-            	<p>abcd</p><p>abcd</p><p>abcd</p>
-            	<p>abcd</p><p>abcd</p><p>abcd</p>
-            	<p>abcd</p><p>abcd</p><p>abcd</p>
-            	<p>abcd</p><p>abcd</p><p>abcd</p>
-            	<p>abcd</p><p>abcd</p><p>abcd</p>
-            	<p>abcd</p><p>abcd</p><p>abcd</p>
-            	<p>abcd</p><p>abcd</p><p>abcd</p>
+            	<!-- 制作一个页面右下角返回顶部的功能-->
+            	<div style="width: 50px;height: 50px;position: fixed;bottom: 0;right: 0;background-color: blue;"></div>
+            	<!-- 之所以把所有p标签包在一个div当中，是因为，如果在父div当中设置背景颜色有高度，所以把子div做背景色就正常了 -->
+            	<div style="background-color:darkgoldenrod ;">
+            		<!-- 之所以增加margin：0，是因为p标签默认有边距 -->
+	            	<p style="margin: 0;">abcd</p><p>abcd</p><p>abcd</p>
+	            	<p>abcd</p><p>abcd</p><p>abcd</p>
+	            	<p>abcd</p><p>abcd</p><p>abcd</p>
+	            	<p>abcd</p><p>abcd</p><p>abcd</p>
+	            	<p>abcd</p><p>abcd</p><p>abcd</p>
+	            	<p>abcd</p><p>abcd</p><p>abcd</p>
+	            	<p>abcd</p><p>abcd</p><p>abcd</p>
+	            	<p>abcd</p><p>abcd</p><p>abcd</p>
+	            	<p>abcd</p><p>abcd</p><p>abcd</p>
+	            	<p>abcd</p><p>abcd</p><p>abcd</p>
+	            	<p>abcd</p><p>abcd</p><p>abcd</p>
+            	</div>
             </div>
 		</div>
 		<div class="pg-footer"></div>
