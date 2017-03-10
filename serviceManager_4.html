@@ -6,12 +6,16 @@
 	描述：后天管理页面，主要实现的是基础的页面布局，左侧的菜单栏保持不变，右侧的内容栏可以做到超长后出现
 	滚动条，制作顶部的header
 	主要用到的css样式有：
-	1.增加登录头像a标签，img标签，border-radius控制圆形
-	2.增加头像悬浮出下拉菜单，外层position:relative相对定位,内层元素absolute绝对定位
+	1.增加各种小图标的获取和显示，获取网站http://fontawesome.io/icons/
 -->
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<!-- 引入图标的文件夹font-awesome-4.7.0，引用css样式文件，
+			font-awesome.min.css和font-awesome.css区别是min是压缩版，线上都用压缩版
+			压缩版的是一行代码
+		-->
+		<link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css" />
 		<title></title>
 		<style>
 			/* 对整个页面的所有元素进行设置*/
@@ -76,6 +80,14 @@
 			.pg-header .user .b a{
 				display: block;
 			}
+			/*设置邮箱和消息图标的间距*/
+			.pg-header .icon{
+				padding: 0 20px;
+			}
+			/*设置邮箱和消息鼠标悬浮操作*/
+			.pg-header .icon:hover{
+				background-color: #DDDDDD;
+			}
 			/* 一下两个样式，是内容div当中两个小div的大小比例，但是如果浏览器页面不断缩小，会造成两个子元素不断变小，所以增加最小宽度 * */
 			.pg-content .menu{
 				position: absolute;
@@ -108,6 +120,7 @@
 			<div class="logo left">
 				Sogou
 			</div>
+			
 			<div class="user right" style="position: relative;">
 				<!-- 用户头像，链接使用a标签，图片方形，变成圆的，使用border-radius-->
 				<a class="a" href="#">
@@ -118,6 +131,13 @@
 					<a>个人资料</a>
 					<a>注销</a>
 				</div>
+			</div>
+			<div class="icon right">
+				<i class="fa fa-envelope-o" aria-hidden="true"></i>
+				<span>1</span>
+			</div>
+			<div class="icon right">
+				<i class="fa fa-bell-o" aria-hidden="true"></i>
 			</div>
 		</div>
 		<div class="pg-content" >
