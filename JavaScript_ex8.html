@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+<!--
+	作者：zjj7842806@163.com
+	时间：2017-11-29
+	描述：设置超时时间setTimeout，以及去掉超时的方法clearTimeout
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title></title>
+	</head>
+	<body>
+		<div id="i1"></div>
+		<input type="button" onclick="delEle();" value="删除"/>
+		<script>
+			function delEle(){
+				document.getElementById("i1").innerText="已删除";
+				setTimeout(function aaa(){
+					document.getElementById("i1").innerHTML="";
+					console.log("111");
+				},5000)
+			}
+		</script>
+	</body>
+</html>

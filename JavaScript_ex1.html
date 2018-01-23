@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+	<!--
+    	作者：zjj7842806@163.com
+    	时间：2017-11-27
+    	描述：不加var为全局变量，加var局部变量
+    -->
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title></title>
+		<script type="application/javascript">
+			/*
+			 * 全局变量
+			 */
+			name = 'alex';
+			
+			function func(){
+				//局部变量，以下name，前如果加var，则下面console打印的是alex，如果不加，则打印的事eric
+				var name = 'eric';
+			}
+			func();
+			console.log(name);
+		</script>
+	</head>
+	<body>
+
+	</body>
+</html>

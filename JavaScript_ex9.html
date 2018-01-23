@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+<!--
+	作者：zjj7842806@163.com
+	时间：2017-11-29
+	描述：将样式、结构、行为相分离的页面1
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title></title>
+		<style type="text/css">
+			#i1{
+				background-color: red;
+				font-size: 15px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="i1">
+			abcd
+		</div>
+		<script type="text/javascript">
+			var dom=document.getElementById('i1');
+			dom.onclick=function(){
+				console.log('abcdefg')
+			}
+		</script>
+	</body>
+</html>

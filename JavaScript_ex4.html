@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+<!--
+	作者：zjj7842806@163.com
+	时间：2017-11-23
+	描述：
+	1.js以函数作为作用域，变量声明后，仅在函数内生效
+	2.函数的作用域在函数未被调用之前，已经创建	
+	3.函数的作用域存在作用域链，并且也是在被调用前创建，执行时从内到外
+	4.函数内局部变量提前声明
+	以上四条打印2222,js代码为20-31行
+	
+	5.例子：实现搜索框，获得焦点，清空请输入关键字，失去焦点提醒输入关键字。
+		方法一：43-56，对div id=i1生效
+		方法二：直接使用placeholder属性，42行，使用js好处是自己定制，并且placeholder对于老版本浏览器可能不兼容
+	
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title></title>
+		<script type="application/javascript">
+			xo='1111';
+			function func(){
+				xo='2222';
+				function inner(){
+					console.log(xo)
+				}
+				return inner;
+			}
+			var ret = func();
+			ret()			
+		</script>
+	</head>
+	<body>
+		<div style="width: 600px;margin: 0 auto;">
+			<!--
+            	onfocus当获得焦点后执行的方法，onblur当失去焦点后执行的方法
+            -->
+			<input id="i1" onfocus="Focus();" onblur="Onblur();" type="text" value="请输入关键字" />
+			<input id="i2" placeholder="请输入关键字" type="text"/>
+		</div>
+		<script>
+			function Focus(){
+				var tag=document.getElementById("i1");
+				if(tag.value="请输入关键字"){
+					tag.value="";
+				}
+			}
+			function Onblur(){
+				var tag=document.getElementById("i1");
+				if(tag.value.length==0){
+					tag.value="请输入关键字";
+				}
+			}
+		</script>
+	</body>
+</html>

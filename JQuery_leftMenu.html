@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="js/jquery-1.12.4.js"></script>
+    <style>
+            .hide{
+                display: none;
+            }
+
+            .container{
+                width:300px;
+                height: 600px;
+                background-color: #ddd;
+                border: 1px solid #999;
+            }
+
+            .container .title{
+                height: 38px;
+                font-size: 28px;
+                line-height: 38px;
+                background-color: orange;
+                cursor: pointer;
+            }
+
+            .container .body{
+                background-color:white;
+            }
+
+            .container .body a{
+                display:block;
+                padding: 10px;
+            }
+        </style>
+    <title>Title</title>
+</head>
+<body>
+<div class='container'>
+            <div>
+                <div class='title' onclick="Dis(this);">Menu1</div>
+                <div class='body'>
+                    <a href="">content1</a>
+                    <a href="">content2</a>
+                    <a href="">content3</a>
+                </div>
+            </div>
+
+            <div>
+                <div class='title' onclick="Dis(this);">Menu2</div>
+                <div class='body hide'>
+                    <a href="">content1</a>
+                    <a href="">content2</a>
+                    <a href="">content3</a>
+                </div>
+            </div>
+
+            <div>
+                <div class='title' onclick="Dis(this);">Menu3</div>
+                <div class='body hide'>
+                    <a href="">content1</a>
+                    <a href="">content2</a>
+                    <a href="">content3</a>
+                </div>
+            </div>
+
+            <div>
+                <div class='title'onclick="Dis(this);">Menu4</div>
+                <div class='body hide'>
+                    <a href="">content1</a>
+                    <a href="">content2</a>
+                    <a href="">content3</a>
+                </div>
+            </div>
+
+            <div>
+                <div class='title' onclick="Dis(this);">Menu5</div>
+                <div class='body hide'>
+                    <a href="">content1</a>
+                    <a href="">content2</a>
+                    <a href="">content3</a>
+                </div>
+            </div>
+
+        </div>
+ <script type="text/javascript">
+    function Dis(ths){
+        $(ths).next().removeClass('hide');
+        $(ths).parent().siblings().find('.body').addClass('hide');
+
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+<!--
+	作者：zjj7842806@163.com
+	时间：2018-01-22
+	描述：返回顶部功能
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title></title>
+	</head>
+	<body>
+		<div style="height: 200px;width: 300px;overflow: scroll;" id="i1">
+			<p>abced</p><p>abced</p><p>abced</p><p>abced</p><p>abced</p><p>abced</p><p>abced</p><p>abced</p><p>abced</p><p>abced</p>
+			<p>abced</p><p>abced</p><p>abced</p><p>abced</p><p>abced</p><p>abced</p><p>abced</p><p>abced</p><p>abced</p><p>abced</p>
+			<p>abced</p><p>abced</p><p>abced</p><p>abced</p><p>abced</p><p>abced</p><p>abced</p><p>abced</p>
+		</div>
+		<div style="height: 1000px;" id="i2"></div>
+		<script type="text/javascript" src="js/jquery-1.12.4.js" ></script>
+		<script>
+			//获取当前整个屏幕滚动条位置
+			var a = $(window).scrollTop();
+			console.log(a);
+			//设置滚动条位置
+			$(window).scrollTop(100);
+			//获取div滚动条的位置
+			var b = $('div').scrollTop();
+			console.log(b);
+			//设置div内滚动条的位置
+			$('div').scrollTop(100);
+			
+			//获取元素的位置offset,c的offset是8,8，因为默认的margin是8
+			var c = $('#i1').offset();
+			console.log(c)
+			//获取offset的顶部offset值
+			$('#i1').offset().top;
+		</script>
+	</body>
+</html>

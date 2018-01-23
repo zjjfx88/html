@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+<!--
+	作者：zjj7842806@163.com
+	时间：2017-11-29
+	描述：将样式、结构、行为相分离的页面2
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title></title>
+	</head>
+	<body>
+		<div id="i1">
+			<table border="1" width="200px">
+				<tr><td>1</td><td>2</td><td>3</td></tr>
+				<tr><td>1</td><td>2</td><td>3</td></tr>
+				<tr><td>1</td><td>2</td><td>3</td></tr>
+			</table>
+		</div>
+		
+		<script>
+			var tr_lst = document.getElementsByTagName('tr');
+			var tr_lst_len = tr_lst.length;
+			for(var i=0;i<tr_lst_len;i++){
+				tr_lst[i].onmouseover=function(){
+					this.style.backgroundColor='red';
+				}
+				tr_lst[i].onmouseout=function(){
+					this.style.backgroundColor='';
+				}
+			}
+			console.log(tr_lst)
+		</script>
+	</body>
+</html>

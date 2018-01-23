@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+<!--
+	作者：zjj7842806@163.com
+	时间：2017-11-27
+	描述：添加按钮，每点击一次自动加一行
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title></title>
+	</head>
+	<body>
+		<input type="button" onclick="addEle1();" value="添加"/>
+		<input type="button" onclick="addEle2();" value="添加"/>
+		<div id="i1">
+			<!--p标签独占一行-->
+			<p><input type="text" /></p>
+		</div>
+		<script>
+			function addEle1(){
+				var tag="<p><input type='text' /></p>";
+				//第一个参数有四种'beforeBegin'、'afterBegin'、'beforeEnd'、'afterEnd'
+				document.getElementById("i1").insertAdjacentHTML("beforeEnd",tag);
+			}
+			function addEle2(){
+				var tag=document.createElement('input');
+				tag.setAttribute('type','text');
+				tag.style.fontSize='16px';
+				tag.style.color='red';
+				
+				var p=document.createElement('p')
+				p.appendChild(tag)
+				
+				document.getElementById("i1").appendChild(p);
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+<!--
+	作者：zjj7842806@163.com
+	时间：2017-12-27
+	描述：使用jQuery实现tab页切换，借助自定义属性实现
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title></title>
+		<script src="js/jquery-1.12.4.js"></script>
+		<style type="text/css">
+			.hide{
+				display: none;
+			}
+			.menu{
+				height: 38px;
+				background-color: #999999;
+				line-height: 38px;
+			}
+			.menu .menu-item{
+				float: left;
+				border-right: 1px solid red;
+				padding: 0 5px;
+				cursor: pointer;
+			}
+			.active{
+				background-color: blueviolet;
+			}
+			.content{
+				height: 200px;
+				border: 1px solid #2459A2;
+			}
+		</style>
+	</head>
+	<body>
+		<div style="width: 700px;margin: 0 auto;">
+			<div class="menu">
+				<div class="menu-item active" menutarget='jieshao'>菜单一</div>
+				<div class="menu-item" menutarget='guige'>菜单二</div>
+				<div class="menu-item" menutarget='pingjia'>菜单三</div>
+			</div>
+			<div class="content">
+				<div contenttarget='jieshao'>内容一</div>
+				<div class="hide" contenttarget='guige'>内容二</div>
+				<div class="hide" contenttarget='pingjia'>内容三</div>
+			</div>
+		</div>
+		<script>
+			//点击菜单按钮
+			$('.menu-item').click(function(){
+				//给当前点击的按钮，增加active样式，即按钮背景色，同时给所有兄弟去掉active标签
+				$(this).addClass('active').siblings().removeClass('active');
+				//获取当前点击按钮的，属性menutarget属性值
+				a=$(this).attr('menutarget')
+				//方法一：内容当中属性值contenttarget和menutarget相等，则给该内容移除hide样式，给兄弟标签增加hide样式
+				//$('.content').children('[contenttarget="'+ a +'"]').removeClass('hide').siblings().addClass('hide')
+				//方法二：获取congtent下面的div，当中contenttarget的属性值和menutarget属性值相当的div
+				//$('.content div[contenttarget="'+a+'"]').removeClass('hide').siblings().addClass('hide')
+				//方法三：遍历所有样式content下面的div，判断div当中的属性值是否和a相等
+				$('.content').children().each(function(){
+					if($(this).attr('contenttarget')==a){
+						$(this).removeClass('hide')
+						$(this).siblings().addClass('hide')
+					}
+				})
+			})
+		</script>
+	</body>
+</html>

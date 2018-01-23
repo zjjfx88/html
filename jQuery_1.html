@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+<!--
+	作者：zjj7842806@163.com
+	时间：2017-11-30
+	描述：css样式引用方式，jquery引用方式
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title></title>
+		<!--描述：css文件引入方法1-->
+		<link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.css" />
+		<!--描述：css文件引入方法2-->
+		<style>
+			.class1{
+				background-color: red;
+			}
+		</style>		
+		
+	</head>
+	<body>
+		<div id="i1" class="c1">
+			<div>
+				<a href="">000</a>
+			</div>
+			<a href="">123</a>
+			<a href="">456</a>
+		</div>
+		<div id="i2" class="c2">
+			<a href="">789</a>
+		</div>
+		<div id="i3" class="c3">
+			<div id="">
+				<a href="">z123</a>
+			</div>
+		</div>
+		<form>
+		    <label>Name:</label>
+		    <input name="name" />
+		    <fieldset>
+		        <label>Newsletter:</label>
+		        <input name="newsletter" />
+		    </fieldset>
+		</form>
+		<input name="none" />
+		<input name="flower" checked="checked" />
+		<button id="run">Run</button><div></div>
+		<!--描述：js文件引入方法1-->
+        <script src="js/jquery-1.12.4.js">
+        	/*里面就可以引用jquery-1.12.4.js当中的方法了
+        	 调用方式包括jQuery关键字加一个点.或者使用$符号加一个.后面接jQuery的方法*/
+			//获取所有a标签
+        	$('a')
+			
+			//获取id=i的div
+			$('#i1')
+			
+			//获取class=c2的标签
+			$('.c2')
+			
+			//获取id=i2,所有a标签,以及css样式class=c3的标签
+			$('#i2,.c3,a')
+			
+			//层级选择器，选择id=1的div下面的所有a标签，使用id加空格再加a标签，找到的该div下所有子子孙孙标签中包含的a标签
+			$('#i1 a')
+			
+			//使用>号，只在儿子节点选择,孙子及以下不考虑，即只要子级符合条件的
+			$('#i1>a')
+			
+			//选择form下的input标签
+			$("form input")
+			
+			//选择紧跟在label标签后的input标签，结果[ <input name="name" />, <input name="newsletter" /> ]
+			$("label + input")
+			
+			//找到所有与表单同辈的 input 元素，结果 <input name="none" />
+			$("form ~ input")
+
+        </script>
+        <!--描述：js文件引入方法2-->
+        <script>
+        	/*自己编写原生态的js代码和方法*/
+        </script>
+	</body>
+</html>

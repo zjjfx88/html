@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+<!--
+	作者：zjj7842806@163.com
+	时间：2017-12-27
+	描述：通过点击添加按钮，将text内容生成一个li添加到ul列表中
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title></title>
+		<script src="js/jquery-1.12.4.js"></script>
+	</head>
+	<body>
+		<input id="t1" type="text" />
+		<input id="b1" type="button" value="添加"/>
+		<input id="d1" type="button" value="删除"/>
+		<input id="c1" type="button" value="复制"/>
+		<ul id="u1">
+		  <li>Coffee</li>
+		  <li>Tea</li>
+		  <li>Milk</li>
+		</ul>
+		<script>
+			//按钮点击方法,添加
+			$('#b1').click(function(){
+				//获取text内容
+				v = $('#t1').val()
+				//生成一个li
+				tmp='<li>'+ v +'</li>'
+				//1.在ul里面所有li最后面追加一个
+				$('#u1').append(tmp)
+				//2.在ul里面所有li最前面追加一个
+				//$('#u1').prepend(tmp)
+				//3.after在ul后面添加一个，和ul同一层级
+				//$('#u1').after(tmp)
+				//4.before在ul前面增加一个，和ul同一层级
+				//$('#u1').before(tmp)
+			})
+			//点击按钮，删除
+			$('#d1').click(function(){
+				//获取text内容，即索引值
+				v = $('#t1').val()
+				//找到对应索引值的li，并删除
+				//1.empty，清空标签内容，不清空标签
+				//2.remove，直接删除标签
+				//$('#u1 li').eq(v).empty();
+				$('#u1 li').eq(v).remove();
+			})
+			
+			//点击按钮,复制
+			$('#c1').click(function(){
+				//获取text内容，即索引值
+				v = $('#t1').val()
+				//找到对应索引值的li，并删除
+				//clone进行复制，并添加到最后面;
+				var cloneOne = $('#u1 li').eq(v).clone();
+				
+				$('#u1').append(cloneOne)
+			})
+		</script>
+	</body>
+</html>

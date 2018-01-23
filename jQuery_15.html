@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+<!--
+	作者：zjj7842806@163.com
+	时间：2018-01-22
+	描述：当标签本身有自带绑定事件，比如a标签，自带跳转url的事件，如果自己再添加事件，会优先自己添加的事件，然后执行自带事件
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title></title>
+	</head>
+	<body>
+		<div id="d1">
+			<a href="http://www.sogou.com" onclick="return clickOn();" >sogou</a>
+			<a href='http://www.baidu.com' id="a1">baidu</a>
+		</div>
+		<script type="text/javascript" src="js/jquery-1.12.4.js" ></script>
+		<script>
+			//通过dom事件绑定，如果不想执行自带事件，则可以在绑定事件的时候，在方法前增加return，然后在方法中增加return false,如果是return true，则还是会在执行
+			//完定义的绑定方法后，执行自带事件
+			function clickOn(){
+				alert('aaaa');
+				return false;
+			}
+			//通过jQuery事件绑定，如果不希望执行自带的绑定事件，则也是在绑定方法中，return false
+			$('#a1').click(function(){
+				alert('bbbb');
+				return false;
+			})
+			
+		</script>
+	</body>
+</html>

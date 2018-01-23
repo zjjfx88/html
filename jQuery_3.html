@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<!--
+	作者：zjj7842806@163.com
+	时间：2017-12-13
+	描述：左侧菜单栏点击切换，使用jQuery实现
+-->
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.header{
+				background-color: black;
+				color: white;
+			}
+			.content{
+				min-height: 50px;
+			}
+			.hide{
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<div style="height: 400px;width: 300px;border: 1px solid #DDDDDD;">
+			<div class="item">
+				<div class="header">标题一</div>
+				<div class="content">内容一</div>
+			</div>
+			<div class="item">
+				<div class="header">标题二</div>
+				<div class="content hide">内容二</div>
+			</div>
+			<div class="item">
+				<div class="header">标题三</div>
+				<div class="content hide">内容三</div>
+			</div>
+		</div>
+		<script src="js/jquery-1.12.4.js"></script>
+		<script>
+			$('.header').click(function(){
+				//当前点击的标签$(this)
+				//获取某个标签的下一个标签
+				//获取某个标签的父标签
+				//获取所有兄弟标签
+				//添加样式和移除样式（如果原来已经有相同名字的样式，则不再添加）
+				//思路是使用$("a + b")查找紧挨着a的b，使用$(this+div)不行
+				//，div会报错未定义，使用$("this+div")也不行，this变成字符串
+				//所以要是用筛选器,this的下一个next()下一个，prev()上一个，parent()父亲标签
+				//children()子标签，siblings()兄弟标签。
+				//find查找标签内的内容，如样式、id等等,子子孙孙中查找
+				//$(this).next().removeClass('hide');
+				//$(this).parent().siblings().find('.content').addClass('hide');
+				//也可以一句完成，即jquery的链式编程
+				$(this).next().removeClass('hide').parent().siblings().find('.content').addClass('hide');
+			})
+		</script>
+	</body>
+</html>

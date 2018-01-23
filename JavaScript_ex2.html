@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title></title>
+	</head>
+	<body>
+		<!--
+        	作者：zjj7842806@163.com
+        	时间：2017-09-19
+        	描述：跑马灯使用JavaScript实现，即字母滚动
+        -->
+        <div id="i1">欢迎光临</div>
+        <script type="application/javascript">
+        	function func1(){
+        		tag = document.getElementById('i1')
+        		content = tag.innerText
+        		first = content.charAt(0)
+        		second = content.substring(1,content.length)
+        		new_content = second + first
+        		tag.innerText = new_content
+        	}
+        	setInterval('func1()',500)
+        </script>
+	</body>
+</html>

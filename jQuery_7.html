@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+<!--
+	作者：zjj7842806@163.com
+	时间：2017-12-27
+	描述：jQuery_4.html的升级，如果表格有多列，当新增一列的时候，就需要，重新设置取值和赋值，所以使用attr进行操作，简便并且增加了扩展性
+	1.给每个td标签加上target属性，即自定义属性
+	2.获取属性值和td内的text文本
+	3.循环方式将text赋值给弹窗
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title></title>
+		<style type="text/css">
+			.hide{
+				display: none;
+			}
+			.model{
+				position: fixed;
+				top: 50%;
+				left: 50%;
+				width: 500px;
+				height: 500px;
+				margin-left: -250px;
+				margin-top: -250px;
+				background-color: #eeeeee;
+				z-index: 10;
+			}
+			.shadow{
+				position: fixed;
+				left: 0;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				opacity: 0.6;
+				background-color: black;
+				z-index: 9;
+			}
+		</style>
+	</head>
+	<body>
+		<a onclick="addElement();">添加</a>
+		
+		
+		<div class="model hide">
+			<div>
+				<input type="text" name="hostname" />
+				<input type="text" name='port' />
+			</div>
+			<div><input type="button" value="取消" onclick="cancelmodel();" /></div>
+		</div>
+		<div>
+			<table border="1px" cellspacing="" cellpadding="" class="tb">
+				<thead><tr><th>选项</th><th>IP</th><th>端口</th><th>操作</th></tr></thead>
+				<tbody>
+					<tr>
+						<td><input type="checkbox" /></td>
+						<td target='hostname'>10.134.1.1</td>
+						<td target='port'>8888</td>
+						<td>
+							<a class="edit">编辑</a> | <a>删除</a>
+						</td>
+					</tr>
+					<tr>
+						<td><input type="checkbox" /></td>
+						<td target='hostname'>10.134.1.2</td>
+						<td target='port'>7777</td>
+						<td>
+							<a class="edit">编辑</a> | <a>删除</a>
+						</td>
+					</tr>
+					<tr>
+						<td><input type="checkbox" /></td>
+						<td target='hostname'>10.134.1.3</td>
+						<td target='port'>9999</td>
+						<td><a class="edit">编辑</a> | <a>删除</a></td></tr>
+					<tr>
+						<td><input type="checkbox" /></td>
+						<td target='hostname'>10.134.1.4</td>
+						<td target='port'>6666</td>
+						<td>
+							<a class="edit">编辑</a> | <a>删除</a>
+						</td>
+					</tr>
+				</tbody>				
+			</table>
+		</div>
+		<div class="shadow hide"></div>
+		<script src="js/jquery-1.12.4.js"></script>
+		<script>
+			function addElement(){
+				$('.model,.shadow').removeClass('hide');
+			}
+			function cancelmodel(){
+				$('.model,.shadow').addClass('hide');
+				$('.model input[type="text"]').val('');
+			}
+			
+			//循环tds
+			//获取标签内内容
+			//赋值给input标签的内容
+			//$(..).text()获取文本内容，$(..).text("内容")，给文本赋值
+			//$(..).html()获取标签内容，$(..).html("内容")，给标签赋值
+			//$(..).val()获取文本内容，$(..).val("内容")，给文本赋值
+			
+			$('.edit').click(function(){
+				//移除隐藏样式
+				$('.model,.shadow').removeClass('hide');
+				//找到当前点击的编辑按钮，之前的所有列，tds是一个列集合
+				var tds = $(this).parent().prevAll();
+				//遍历每一个列
+				tds.each(function(){
+					//获取target的属性值
+					var targetname = $(this).attr('target');
+					//获取当前列的text内容
+					var targetcontent = $(this).text();
+					//给弹出框的input标签赋值，name属性值和target属性值一样，则赋值target的text内容
+					$('.model input[name="'+ targetname + '"]').val(targetcontent);
+				})
+				/*
+			    var port = $(tds[0]).text();
+				var host = $(tds[1]).text();
+				$('.model input[name="host"]').val(host);
+				$('.model input[name="port"]').val(port);
+				*/
+			})
+		</script>
+	</body>
+</html>

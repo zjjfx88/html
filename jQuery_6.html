@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+<!--
+	作者：zjj7842806@163.com
+	时间：2017-12-27
+	描述：使用jQuery操作属性，使用attr获取属性，attr加两个参数设置属性，prop用来获取checkbox是否被选中，prop加checked加true或false设置选中和取消
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title></title>
+		
+		<style>
+			.hide{
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="">
+			<input id="i2" type="checkbox" />
+			<input id="i1" type="button" value="开关" />
+			<div class="c1 hide">abcdefg</div>
+		</div>
+		<script src="js/jquery-1.12.4.js"></script>
+		<script>
+			//获取标签
+			$('#i1')
+			//查看标签内的内容，则先转化成dom形式
+			$('#i1')[0]
+			//打印出转化成dom后的内容，通过console查看,结果<input id="i1" type="button" value="开关">
+			console.log($('#i1')[0])
+			//获取type属性的值$('#i1').attr('type'),打印出来
+			console.log($('#i1').attr('type'))
+			console.log($('#i1').attr('id'))
+			console.log($('#i1').attr('value'))
+			//设置属性的值,已有属性的话，则被覆盖掉
+			$('#i1').attr('name','zhangjj')
+			//去掉属性和属性值
+			$('#i1').removeAttr('name')
+			
+			//prop，专门用于对checkbox和radio做操作的,使用attr也能操作，但是jQuery3以下会有bug，重复添加删除之后就不行了
+			console.log($('#i2')[0])
+			//设置checkbox为选中
+			$('#i2').prop('checked',true)
+			//获取是否被选中
+			$('#i2').prop('checked')
+			
+			$('#i1').click(function(){
+				//方法之一
+				/*if($('.c1').hasClass('hide')){
+					$('.c1').removeClass('hide');
+				}else{
+					$('.c1').addClass('hide');
+				}*/
+				//方法二，jQuery封装好的,有的去掉，没有的加上
+				$('.c1').toggleClass('hide');
+			})
+		</script>
+	</body>
+</html>
