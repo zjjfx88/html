@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+<!--
+	作者：zjj7842806@163.com
+	时间：2018-01-24
+	描述：bootstrap的基本使用方法
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title></title>
+		<!--
+        	作者：zjj7842806@163.com
+        	时间：2018-01-24
+        	描述：导入css和主题css
+        -->
+		<link rel="stylesheet" href="bxslider-4/dist/jquery.bxslider.css" />
+	</head>
+	<body>
+		<div class="bxslider">
+ 		 <div><img src="img/coffee1.jpg" title="Funky roots"></div>
+ 		 <div><img src="img/coffee2.jpg" title="The long and winding road"></div>
+ 		 <div><img src="img/coffee3.jpg" title="Happy trees"></div>
+		</div>
+		
+		<script src="js/jquery-1.12.4.js"></script>
+		<script src="bxslider-4/dist/jquery.bxslider.js"></script>
+		<script>
+			$(function(){
+			  $('.bxslider').bxSlider({
+			    mode: 'fade',
+			    captions: true,
+			    slideWidth: 600
+			  });
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+<!--
+	作者：zjj7842806@163.com
+	时间：2018-01-22
+	描述：jQuery扩展自定义方法
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title></title>
+		<style>
+			.error{
+				color:red;
+			}
+		</style>
+	</head>
+	<body>
+		<form id='f1' action="index.html" method="POST">
+			<div><input type="text" name="t1"  value="" require="" /></div>
+			<div><input type="password" name="t2"  value="" /></div>
+			<div><input type="text" name="t3" value="" /></div>
+			<div><input type="text" name="t4" value="" /></div>
+			<div><input type="text" name="t5" value="" /></div>
+			<input type="submit" value="提交"/>
+		</form>
+		<script type="text/javascript" src="js/jquery-1.12.4.js" ></script>
+		<script>
+			//扩展jQuery方法，自定义方法加入到jQuery中
+			//一般的调用方式
+			//$('#f1').click()
+			//或者$.ajax({});
+			
+//			//扩展自定义方法(一)
+//			$.extend({
+//				'abc':function(){
+//					return 'hello world';
+//				}
+//			})
+//			//使用自定义扩展方法
+//			var a = $.abc();
+//			alert(a);
+//			
+			//扩展自定义方法(二)
+			$.fn.extend({
+				'def':function(){
+					return 'hello';
+				}
+			})
+			//调用
+			b = $('#f1').def();
+			alert(b);
+			
+		</script>
+	</body>
+</html>
