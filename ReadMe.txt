@@ -71,3 +71,21 @@ jQuery_13.html
 
 jQuery_14.html
 	描述：点击li获取文本，并通过alert在弹出框进行展现，通过点击添加按钮，将text内容生成一个li添加到ul列表中，再次点击新添加的li，只能用事件委托获取该新增标签
+	
+jQuery_15.html
+	描述：当标签本身有自带绑定事件，比如a标签，自带跳转url的事件，如果自己再添加事件，会优先自己添加的事件，然后执行自带事件
+
+jQuery_16.html
+	描述：form表单提交，必填选项的控制
+	
+jQuery_17.html
+	描述：jQuery扩展自定义方法
+	
+jQuery_18.html
+	描述：响应式布局，格局页面大小不一样，布局样式可以设置成不一样
+	
+bootstrap_1.html
+	描述：bootstrap的基本使用方法	
+	
+bootstrap_2.html
+	描述：bxslider的基本使用方法	

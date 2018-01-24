@@ -9,6 +9,11 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<title></title>
+		<style>
+			.error{
+				color:red;
+			}
+		</style>
 	</head>
 	<body>
 		<form id='f1' action="index.html" method="POST">
@@ -21,14 +26,25 @@
 		</form>
 		<script type="text/javascript" src="js/jquery-1.12.4.js" ></script>
 		<script>
-			$(':submit').click(function(){
-				$('f1').find('input[type="text"],input[type="password"]').each(function(){
-					var v=$(this).val();
-					if(v.length<=0){
-						var tag = document.createElement('span');
-						tag.innerHTML="必填";
-						$(this).after(tag);
-					}
+			//当页面框架加载完后，就加载里面的方法，无需等待页面内资源也加载完毕
+			$(function(){
+				//正常只有页面资源都加载完毕，以下的方法才会被绑定，这样的问题是：如果页面有部分资源加载特别慢，比如一张图片
+				//那就必须等图片加载完毕才能绑定下面的方法，这种情况的解决办法是，在方法外层再加一个$(function(){})
+				$(':submit').click(function(){
+					$('.error').remove();
+					flag=true;
+					$('#f1').find('input[type="text"],input[type="password"]').each(function(){
+						var v=$(this).val();
+						if(v.length<=0){
+							flag=false;
+							var tag = document.createElement('span');
+							tag.className='error';
+							tag.innerHTML="必填";
+							$(this).after(tag);
+							//return false;如果加上这句，则检测到第一个必填但未填的就直接返回了。
+						}
+					})
+					return flag;
 				})
 			})
 			
