@@ -33,5 +33,5 @@ def RunServer(environ,start_response):
 
 if __name__ == '__main__':
 	httpd = make_server('',8000,RunServer)
-	print 'Serving Http on port 8000'
+	print('Serving Http on port 8000')
 	httpd.serve_forever()
